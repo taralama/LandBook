@@ -1,10 +1,12 @@
-import { Box, Heading, Input, Button, Text } from "@chakra-ui/react";
+import { Box, Heading, Input, Button, Text, Toast, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const SignUp = () => {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const [isChecked, setIsCheckbox] = useState({
     checkbox1: false,
@@ -44,12 +46,13 @@ const SignUp = () => {
       });
       console.log(res.data.msg);
       if (res.data.msg === "success") {
-        alert("Signup successfully");
+        toast({status:'success',description:'signup Successful',position:'top'})
         navigate("/login");
       } else if (res.data.msg === "user exits") {
-        alert(res.data.msg);
+        toast({status: 'error',title:res.data.msg});
       } else {
-        alert(res.data.msg + "& Email exits");
+        toast({status:'error',title:res.data.msg+"& Email exits",position:'top'})
+        
       }
     } catch (error) {
       console.log("fail to post data " + error);

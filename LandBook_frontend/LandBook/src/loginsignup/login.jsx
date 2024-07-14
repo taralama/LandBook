@@ -1,10 +1,28 @@
-import { Box, Heading, Input, Button, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Input,
+  Button,
+  Image,
+  Text,
+  Toast,
+  useToast,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+
 import img from "../Images/loginsignup/loginpan.png";
 
 const Login = () => {
+  const toast = useToast({
+    position: "top",
+    title: "Error",
+    description: "Login restricted for Admin",
+    status: "error",
+    duration:'2000',
+    isClosable: true,
+  });
   const navigate = useNavigate();
   const [data, setdata] = useState({
     Username: "",
@@ -25,7 +43,7 @@ const Login = () => {
         } else if (userRole === 2) {
           navigate("/bdashboard");
         } else if (userRole === 3) {
-          alert("/admin login restricted");
+          toast();
         }
       } else {
         alert(res.data.msg);
@@ -91,7 +109,7 @@ const Login = () => {
             textAlign={"center"}
             borderRadius={"2rem"}
             p={"1rem"}
-            mt={'10vh'}
+            mt={"10vh"}
           >
             <form action="submit" onSubmit={handleSubmit}>
               <Heading
@@ -108,7 +126,7 @@ const Login = () => {
                 letterSpacing={"2px"}
                 color={"black"}
                 mt={"8vh"}
-                fontFamily={'manrope'}
+                fontFamily={"manrope"}
               >
                 Username
               </Text>
@@ -117,7 +135,7 @@ const Login = () => {
                 border={"none"}
                 borderBottom={"1px solid "}
                 borderRadius={"none"}
-                _focus={{boxShadow:'none',borderColor:'black'}}
+                _focus={{ boxShadow: "none", borderColor: "black" }}
                 onChange={(e) =>
                   setdata({
                     ...data,
@@ -134,12 +152,12 @@ const Login = () => {
                 Password
               </Text>
               <Input
-              type="password"
+                type="password"
                 border={"none"}
                 borderBottom={"1px solid "}
                 borderRadius={"none"}
                 placeholder="Enter Password"
-                _focus={{boxShadow:'none',borderColor:'black'}}
+                _focus={{ boxShadow: "none", borderColor: "black" }}
                 onChange={(e) =>
                   setdata({
                     ...data,
@@ -149,35 +167,41 @@ const Login = () => {
               ></Input>
 
               <Link exact to={"/admin"}>
-                <Text mt={"1rem"} fontFamily={'manrope'} _hover={{color:'blue'}} color={'blue'}>LogIn as admin</Text>
+                <Text
+                  mt={"1rem"}
+                  fontFamily={"manrope"}
+                  _hover={{ color: "blue" }}
+                  color={"blue"}
+                >
+                  LogIn as admin
+                </Text>
               </Link>
 
               <Box display="flex" flexDirection={"column"} mt="1vh">
                 <Button
-                h={'2rem'}
+                  h={"2rem"}
                   type="submit"
                   bgColor="#3C6B66"
                   _hover={{ bgColor: "teal.700" }}
                   transition={".5s"}
                   color="white"
                   m={"1vh"}
-                  borderRadius={'10rem 0px 10rem 0px'}
-                  mt={'2rem'}
+                  borderRadius={"10rem 0px 10rem 0px"}
+                  mt={"2rem"}
                 >
                   <Text>Login</Text>
                 </Button>
                 <Button
                   onClick={signUp}
-                  h={'2rem'}
+                  h={"2rem"}
                   position={"relative"}
                   w={"10vw"}
                   right={"0"}
                   bgColor="#3C466B"
                   _hover={{ bgColor: "blue.900" }}
                   transition={".5s"}
-                  color={'white'}
-                  borderRadius={'10rem 0px 10rem 0px'}
-                  
+                  color={"white"}
+                  borderRadius={"10rem 0px 10rem 0px"}
                 >
                   SignUp
                 </Button>
