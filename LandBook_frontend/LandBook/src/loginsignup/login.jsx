@@ -72,61 +72,117 @@ const Login = () => {
             "Your Dream Property Awaits
           </Text>
         </Box>
-        <Box display={'flex'} justifyContent={'center'} zIndex={'1'} alignContent={'center'} alignItems={'center'} h={'100vh'} w={'40vw'}>
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          zIndex={"1"}
+          alignContent={"center"}
+          alignItems={"center"}
+          h={"100vh"}
+          w={"40vw"}
+        >
           <Box
-            
             height={"70vh"}
-            width={"20vw"}
+            width={"25vw"}
             bgColor={"#8A8D8B"}
             bg={"linear-gradient(to bottom, #FFFFFF, #8A8D8B)"}
-            boxShadow={'-200px 1px 20px rgba(0,0,0,0.5)'}
-            alignItems={'center'}
-            textAlign={'center'}
-            borderRadius={'2rem'}
-            p={'1rem'}
+            boxShadow={"-200px 1px 20px rgba(0,0,0,0.4)"}
+            alignItems={"center"}
+            textAlign={"center"}
+            borderRadius={"2rem"}
+            p={"1rem"}
+            mt={'10vh'}
           >
-             <form action="submit" onSubmit={handleSubmit}>
-              <Heading size={'xl'} fontFamily={'manrope'} mt={'2vh'} color={'#2B9F5A'}>Login</Heading>
-            <Text textAlign={"left"} size={"1xl"} letterSpacing={'2px'} color={"black"} mt={"8vh"}>
-              Username
-            </Text>
-            <input  onChange={(e) =>
-                setdata({
-                  ...data,
-                  Username: e.target.value,
-                })}
-             
-             className='w-5/6 active:border-none '
-              
-            ></input>
-            <Text textAlign={"left"} size={"1xl"} letterSpacing={'2px'} color={"black"}>
-              Password
-            </Text>
-            <Input
-            placeholder="Enter Password"
-            type="password"
-              onChange={(e) =>
-                setdata({
-                  ...data,
-                  Password: e.target.value,
-                })
-              }
-            ></Input>
+            <form action="submit" onSubmit={handleSubmit}>
+              <Heading
+                size={"xl"}
+                fontFamily={"manrope"}
+                mt={"2vh"}
+                color={"#2B9F5A"}
+              >
+                Login
+              </Heading>
+              <Text
+                textAlign={"left"}
+                size={"1xl"}
+                letterSpacing={"2px"}
+                color={"black"}
+                mt={"8vh"}
+                fontFamily={'manrope'}
+              >
+                Username
+              </Text>
+              <Input
+                placeholder="Enter Username"
+                border={"none"}
+                borderBottom={"1px solid "}
+                borderRadius={"none"}
+                _focus={{boxShadow:'none',borderColor:'black'}}
+                onChange={(e) =>
+                  setdata({
+                    ...data,
+                    Username: e.target.value,
+                  })
+                }
+              ></Input>
+              <Text
+                textAlign={"left"}
+                size={"1xl"}
+                letterSpacing={"2px"}
+                color={"black"}
+              >
+                Password
+              </Text>
+              <Input
+              type="password"
+                border={"none"}
+                borderBottom={"1px solid "}
+                borderRadius={"none"}
+                placeholder="Enter Password"
+                _focus={{boxShadow:'none',borderColor:'black'}}
+                onChange={(e) =>
+                  setdata({
+                    ...data,
+                    Password: e.target.value,
+                  })
+                }
+              ></Input>
 
-            <Link exact to={"/admin"}>
-              <h3>LogIn as admin</h3>
-            </Link>
+              <Link exact to={"/admin"}>
+                <Text mt={"1rem"} fontFamily={'manrope'} _hover={{color:'blue'}} color={'blue'}>LogIn as admin</Text>
+              </Link>
 
-            <Box display="flex" flexDirection={'column'} mt="1vh">
-            <Button type="submit" bgColor="blue" color="white" m={'1vh'}>
-              Submit
-            </Button>
-            <Button onClick={signUp}   position={'relative'} w={'10vw'} right={'0'}>
-              SignUp
-            </Button>
-          </Box>
-          </form>
-            
+              <Box display="flex" flexDirection={"column"} mt="1vh">
+                <Button
+                h={'2rem'}
+                  type="submit"
+                  bgColor="#3C6B66"
+                  _hover={{ bgColor: "teal.700" }}
+                  transition={".5s"}
+                  color="white"
+                  m={"1vh"}
+                  borderRadius={'10rem 0px 10rem 0px'}
+                  mt={'2rem'}
+                >
+                  <Text>Login</Text>
+                </Button>
+                <Button
+                  onClick={signUp}
+                  h={'2rem'}
+                  position={"relative"}
+                  w={"10vw"}
+                  right={"0"}
+                  bgColor="#3C466B"
+                  _hover={{ bgColor: "blue.900" }}
+                  transition={".5s"}
+                  color={'white'}
+                  borderRadius={'10rem 0px 10rem 0px'}
+                  
+                >
+                  SignUp
+                </Button>
+              </Box>
+            </form>
           </Box>
         </Box>
       </Box>
