@@ -12,7 +12,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Bdashboard = () => {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
   const [data, setData] = useState([]);
 
   axios.defaults.withCredentials = true;

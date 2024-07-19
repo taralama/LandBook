@@ -13,6 +13,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 import img from "../Images/loginsignup/loginpan.png";
+import AutoTypingText from "../Components/Autotyping";
 
 const Login = () => {
   const toast = useToast({
@@ -86,8 +87,9 @@ const Login = () => {
           >
             Welcome <br /> to Land Book
           </Heading>
-          <Text fontSize={"2xl"} mt={"2vh"} fontFamily={"manrope"}>
-            "Your Dream Property Awaits
+          <Text fontSize={'2xl'} mt={'2vh'} fontFamily={'manrope'}>
+            {/* Use the AutoTypingText component here */}
+            <AutoTypingText text='"Your Dream Property Awaits"' speed={200} />
           </Text>
         </Box>
         <Box
@@ -131,6 +133,7 @@ const Login = () => {
                 Username
               </Text>
               <Input
+                h={'1rem'}
                 placeholder="Enter Username"
                 border={"none"}
                 borderBottom={"1px solid "}
@@ -144,6 +147,7 @@ const Login = () => {
                 }
               ></Input>
               <Text
+              mt={'1rem'}
                 textAlign={"left"}
                 size={"1xl"}
                 letterSpacing={"2px"}
@@ -153,6 +157,7 @@ const Login = () => {
               </Text>
               <Input
                 type="password"
+                h={'1rem'}
                 border={"none"}
                 borderBottom={"1px solid "}
                 borderRadius={"none"}
@@ -182,12 +187,13 @@ const Login = () => {
                   h={"2rem"}
                   type="submit"
                   bgColor="#3C6B66"
-                  _hover={{ bgColor: "teal.700" }}
+                  _hover={{ bgColor: "teal.700" ,scale:'.5'}}
                   transition={".5s"}
                   color="white"
                   m={"1vh"}
                   borderRadius={"10rem 0px 10rem 0px"}
                   mt={"2rem"}
+                 
                 >
                   <Text>Login</Text>
                 </Button>
@@ -202,6 +208,7 @@ const Login = () => {
                   transition={".5s"}
                   color={"white"}
                   borderRadius={"10rem 0px 10rem 0px"}
+                 
                 >
                   SignUp
                 </Button>

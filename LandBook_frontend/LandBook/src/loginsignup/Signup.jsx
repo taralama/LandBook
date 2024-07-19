@@ -2,6 +2,7 @@ import { Box, Heading, Input, Button, Text, Toast, useToast } from "@chakra-ui/r
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AutoTypingText from "../Components/Autotyping";
 
 
 const SignUp = () => {
@@ -90,8 +91,9 @@ const SignUp = () => {
           >
             Welcome <br /> to Land Book
           </Heading>
-          <Text fontSize={"2xl"} mt={"2vh"} fontFamily={"manrope"}>
-            "Your Dream Property Awaits
+          <Text fontSize={'2xl'} mt={'2vh'} fontFamily={'manrope'}>
+            {/* Use the AutoTypingText component here */}
+            <AutoTypingText text='"Unlock the door to your dream home today"' speed={200} />
           </Text>
         </Box>
         {/* left */}
