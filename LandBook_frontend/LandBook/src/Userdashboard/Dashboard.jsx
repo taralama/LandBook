@@ -11,6 +11,17 @@ import {
   MenuList,
   Text,
   UnorderedList,
+  useDisclosure,
+  Input
+} from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import React from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -18,33 +29,8 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const SlideData = [
-    {
-      id: 1,
-      image:
-        "https://images.unsplash.com/photo-1546768292-fb12f6c92568?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    },
-    {
-      id: 2,
-      image:
-        "https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80",
-    },
-    {
-      id: 3,
-      image:
-        "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-    },
-    {
-      id: 4,
-      image:
-        "https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80",
-    },
-    {
-      id: 5,
-      image:
-        "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-    },
-  ];
+  const { isOpen,onOpen,onClose} = useDisclosure()
+
 
   return (
     <>
@@ -66,9 +52,9 @@ const Dashboard = () => {
         w={"100vw"}
         boxShadow={"1px 2px 10px"}
         alignContent={"center"}
-        alignItems={'center'}
+        alignItems={"center"}
         pl={"3rem"}
-        display={'flex'}
+        display={"flex"}
       >
         <UnorderedList
           styleType={"none"}
@@ -94,10 +80,10 @@ const Dashboard = () => {
               </MenuButton>
               <MenuList>
                 <Link to={"/bdashboard"}>
-                  <MenuItem>Buyer</MenuItem>
+                  <MenuItem ><Text color={'green'}>Buyer</Text></MenuItem>
                 </Link>
                 <Link to={"/sdashboard"}>
-                  <MenuItem>Seller</MenuItem>
+                  <MenuItem><Text color={'red'}>Seller</Text></MenuItem>
                 </Link>
               </MenuList>
             </Menu>
@@ -112,14 +98,75 @@ const Dashboard = () => {
             <Text fontWeight={"bold"}>Contacts</Text>
           </ListItem>
         </UnorderedList>
-        <Text position={'absolute'} right={'0'} textAlign={'right'} alignContent={'center'}>My Account</Text>
+
+        <Menu>
+          <MenuButton
+            as={Button}
+            rightIcon={<ChevronDownIcon />}
+            bgColor={"white"}
+            fontFamily={"manrope"}
+            border={"none"}
+            height={""}
+            position={"absolute"}
+            right={"0px"}
+          >
+            <i class="fa-regular fa-user"></i>
+          </MenuButton>
+          <MenuList>
+            <Link to={"#"}>
+              <MenuItem>Profile</MenuItem>
+            </Link>
+            <Link to={"#"}>
+              <MenuItem>
+                {" "}
+                <Text onClick={onOpen}>Setting</Text>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Setting</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Text>Current Password</Text>
+                      <Input></Input>
+                      <Text>New Password</Text>
+                      <Input></Input>
+                      <Text>Confirm Password</Text>
+                      <Input></Input>
+
+                    </ModalBody>
+                   
+                    <ModalFooter >
+                      <Button onSubmit={'#'} mr={'1rem'} bgColor={'green'} color='white' >Save</Button>
+                      <Button colorScheme="blue" mr={3} onClick={onClose}>
+                        Close
+                      </Button>
+                     
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </MenuItem>
+            </Link>
+            <Link to={"#"}>
+              <MenuItem>Notification</MenuItem>
+            </Link>
+            <Link to={"/login"}>
+              <MenuItem>Logout</MenuItem>
+            </Link>
+          </MenuList>
+        </Menu>
       </Box>
-      <Box border={"1px solid "} height={"40vh"} bgColor={"blanchedalmond"} display={'flex'} justifyContent={'center'}>
-        <Image src={SlideData[1].image} h={"40vh"}></Image>
+      <Box
+       
+        height={"40vh"}
+        padding={'1rem'}
+        display={"flex"}
+        justifyContent={"center"}
+      >
+        <Image width={'90%'} src={'https://lh3.googleusercontent.com/NzYtCnVs5zlwtabAYmclakWflzz_r2cTS0b36zFd4zroKLv4M283iUHS9xeMeRWdaY7MO_CogjxrCGeHTvf2ItrXlC5vKlPLhPUNf-UeGSsV0ubXGRGRMjROm6R1pkjE35VRguz2vRJRmCYHEMCxq1ny3wnC83_iSjkHUKE8JnfqDQHXiyI0XDpjpj8kGw'} h={"40vh"}></Image>
       </Box>
 
       <Box
-        border={"1px solid "}
+        // border={"1px solid "}
         h={"22vw"}
         display={"grid"}
         gridTemplateColumns={{
@@ -133,7 +180,7 @@ const Dashboard = () => {
       >
         <Box
           borderRadius={"1rem"}
-          bgColor={'#F4F5F4'}
+          bgColor={"#F4F5F4"}
           boxShadow={"1px 2px 8px"}
           height={"40vh"}
           p={"1rem"}
@@ -151,10 +198,10 @@ const Dashboard = () => {
         </Box>
         <Box
           borderRadius={"1rem"}
-            bgColor={'#F4F5F4'}
+          bgColor={"#F4F5F4"}
           boxShadow={"1px 2px 8px"}
           height={"40vh"}
-          p={'1rem'}
+          p={"1rem"}
         >
           {" "}
           <Heading fontFamily={"manrope"} fontSize={"lg"}>
@@ -169,19 +216,21 @@ const Dashboard = () => {
         </Box>
         <Box
           borderRadius={"1rem"}
-          bgColor={'#F4F5F4'}
+          bgColor={"#F4F5F4"}
           boxShadow={"1px 2px 8px"}
           height={"40vh"}
-          p={'1rem'}
-        ><Heading fontFamily={"manrope"} fontSize={"lg"}>
-        How It Works
-      </Heading>
-      <Text mt={"1rem"} fontSize={"sm"} fontFamily={"manrope"}>
-        Search for Properties: "Use our advanced search to find the perfect
-        property." Schedule a Visit: "Book a viewing with one of our
-        agents." Make an Offer: "Submit your offer through our platform."
-        Close the Deal: "Complete the transaction with our assistance."{" "}
-      </Text></Box>
+          p={"1rem"}
+        >
+          <Heading fontFamily={"manrope"} fontSize={"lg"}>
+            How It Works
+          </Heading>
+          <Text mt={"1rem"} fontSize={"sm"} fontFamily={"manrope"}>
+            Search for Properties: "Use our advanced search to find the perfect
+            property." Schedule a Visit: "Book a viewing with one of our
+            agents." Make an Offer: "Submit your offer through our platform."
+            Close the Deal: "Complete the transaction with our assistance."{" "}
+          </Text>
+        </Box>
       </Box>
     </>
   );

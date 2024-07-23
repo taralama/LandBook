@@ -1,4 +1,4 @@
-import Adashboard from "./admin/adashboard";
+import Adashboard from "./admin/Adashboard";
 import Admin from "./loginsignup/admin";
 import Login from "./loginsignup/login";
 import SignUp from "./loginsignup/Signup";
@@ -7,17 +7,21 @@ import Bdashboard from "./buyer/Bdashboard";
 import Sdashboard from "./seller/Sdashboard";
 import './index.css'
 import Dashboard from "./Userdashboard/Dashboard";
+import Singleprop from "./buyer/Singleprop";
 
 function App() {
   return (
     <>
     <Routes>
-      <Route path="/" element={<Login/>}/>
+      <Route path="/login" element={<Login/>}/>
       <Route path="/admin" element={<Admin/>}/>
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/adashboard" element={<Adashboard/>}/>
+
       <Route path="/bdashboard" element={<Bdashboard/>}/>
       <Route path="/sdashboard" element={<Sdashboard/>}/>
+      <Route path="/bdashboard/:id" element={<Singleprop/>}/>
     </Routes>
     </>
   );

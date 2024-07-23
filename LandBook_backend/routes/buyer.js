@@ -11,7 +11,7 @@ bRouter.use('/uploads', express.static(uploadsPath));
 bRouter.get('/bdashboard',async (req,res)=>{
     try {
         const response = await Property.find({})
-        console.log(response)
+        // console.log(response)
         return res.json({Status: 'Success',mainData : response})
 
     } catch (error) {
