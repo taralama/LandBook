@@ -1,8 +1,14 @@
-import { Heading, Input } from "@chakra-ui/react";
+import { Box, Heading, Input, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {configureStore} from '@reduxjs/toolkit'
+
+
+
 
 const Sdashboard = () => {
+
   const [auth, setAuth] = useState(true);
   const [data, setData] = useState({
     Location: "",
@@ -40,7 +46,25 @@ const Sdashboard = () => {
     <>
       {auth ? (
         <>
+        <Box
+        height={"6vh"}
+        w={{ base: "100%", sm: "100%", md: "100%" }}
+        bgColor={"#3C466B"}
+        textAlign={"left"}
+        p={"5px"}
+        border={"none"}
+      >
+        <Link to={'/dashboard'}>
+          <Heading ml={"1rem"} size={"lg"} color={"white"} fontFamily={"manrope"}>
+            LandBook
+          </Heading>
+        </Link>
+      </Box>
           <h1> this is verified</h1>
+          <Box display={'flex'} justifyContent={'center'}>
+          <Box  width={'40vw'} p={'1rem'} boxShadow={'1px 2px 8px '} >
+            <Heading ><Text textAlign={'center'} alignContent={'center'} color={'blue'} >Add Property</Text></Heading>
+
           <form
             action="http://localhost:8000/sdashboard"
             method="post"
@@ -117,7 +141,7 @@ const Sdashboard = () => {
          
             <input type="file" name="profileImage" />
             <button type="submit">Upload</button>
-          </form>
+          </form></Box></Box>
         </>
       ) : (
         <h1>this is not verified</h1>

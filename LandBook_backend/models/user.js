@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema({
     Userrole: {
       type: Number,
     },
+    Usersavedprop:{
+      type: Array,
+    }
   });
 
   const User = mongoose.model("user", userSchema);

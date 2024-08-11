@@ -47,7 +47,8 @@ const Login = () => {
           toast();
         }
       } else {
-        alert(res.data.msg);
+        
+        toast({position:'top' ,description:res.data.msg})
       }
     } catch (error) {
       console.log("error to  logged in");

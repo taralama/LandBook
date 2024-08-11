@@ -21,7 +21,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+
 const Bdashboard = () => {
+ 
+
+
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
   const [searchParams, setSearchParams] = useState({ Location: '', Price: '' });
   const [auth, setAuth] = useState(false);
@@ -100,9 +104,10 @@ const Bdashboard = () => {
             </Text>
           </ListItem>
           <ListItem>
+            <Link to={'/saved'}>
             <Text fontWeight={"bold"} fontFamily={"manrope"}>
               Saved
-            </Text>
+            </Text></Link>
           </ListItem>
         </UnorderedList>
       </Box>

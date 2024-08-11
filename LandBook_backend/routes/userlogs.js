@@ -9,6 +9,7 @@ const router = express.Router();
 
 
 const verifyUser = (req, res, next) => {
+   console.log("verifyUser middleware executed");
   const token = req.cookies.token;
  
   if (!token) {
@@ -19,7 +20,8 @@ const verifyUser = (req, res, next) => {
         console.log('Token is not ok');
         return res.json({ Error: "Token is not ok" });
       } else {
-        name = decoded.name;
+        
+        req.name = decoded.name;
 
         next();
       }
@@ -27,11 +29,33 @@ const verifyUser = (req, res, next) => {
   }
 }
 
+
+
 router.get('/', verifyUser, (req, res) => {
+  
+  
   return res.json({ Status: 'Success' });
 });
 
 
+
+router.get('/profile',verifyUser,async(req,res)=>{
+  try {
+    const user = await User.find({Username: req.name})
+    console.log(user)
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({
+      Status: 'Success',
+      data:user
+      
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+})
 
 
 
@@ -147,4 +171,4 @@ router.post("/admin", async (req, res) => {
   });
   
   
-module.exports = router
+module.exports = {router,verifyUser}

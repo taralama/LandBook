@@ -1,9 +1,14 @@
-import { Box, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import {addItem} from '../reduxstore/userSlice'
 
 const Singleprop = () => {
+  const dispatch = useDispatch();
+
+ 
   const [data, setData] = useState({});
   const { id } = useParams();
 
@@ -18,7 +23,11 @@ const Singleprop = () => {
     };
     fetchData();
   }, [id]);
-  console.log(data);
+
+  const saveProp = () =>{
+    dispatch(addItem(data))
+  }
+
   return (
     <>
       <Box
@@ -49,7 +58,9 @@ const Singleprop = () => {
         alignItems={"center"}
         pl={"3rem"}
         display={"flex"}
-      ></Box>
+      >
+        <Link to={'/Bdashboard'}><Text fontFamily={'manrope'} fontWeight={'bold'}>Back to list </Text></Link>
+      </Box>
 
       <Box
         boxShadow={"1px 5px 10px "}
@@ -60,13 +71,16 @@ const Singleprop = () => {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <Box position={'relative'} boxShadow={"1px 5px 10px "} width={"80%"} p={"1rem"} h={"60vh"} display={'grid'} gridTemplateColumns={'50% 50%'}>
+        <Box position={'relative'} boxShadow={"1px 5px 10px "} width={"60%"} p={"1rem"} h={"60vh"} display={'grid'} gridTemplateColumns={'50% 50%'}>
           <Box>
-          <Heading fontFamily={'manrope'}>{data.Location}</Heading>
-          <Text fontFamily={'manrope'} mt={"3rem"}>{data.Description}</Text>
+          <Heading bgColor={''} fontFamily={'manrope'}> {data.Location}</Heading>
+          <Text fontFamily={'manrope'} mt={"3rem"}><strong>Description: </strong> <br />{data.Description}</Text>
+          <Text fontFamily={'manrope'} mt={"3rem"}>Area is not Available right now</Text>
           <Text fontFamily={'manrope'} position={'absolute'} bottom={'1rem'}><strong>Owner Name:</strong>  {data.Ownername}</Text>
           </Box>
-          <Box overflow={'scroll'}><Image  src={`http://localhost:8000/${data.Gallery}`} ></Image></Box>
+          <Box overflow={'scroll'}><Image  src={`http://localhost:8000/${data.Gallery}`} ></Image>
+          <Button mt={'2rem'} bgColor={'#3C466B'} color={'white'} onClick={saveProp}>Save</Button>
+          </Box>
         </Box>
       </Box>
     </>

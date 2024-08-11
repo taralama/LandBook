@@ -7,7 +7,7 @@ const { type } = require("os");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const cookieParser = require("cookie-parser");
-const router = require('./routes/userlogs.js')
+const {router} = require('./routes/userlogs.js')
 const sRouter = require('./routes/seller.js')
 const bRouter = require('./routes/buyer.js')
 
@@ -48,7 +48,6 @@ app.use(cookieParser())
 app.use(router);
 app.use(sRouter);
 app.use(bRouter);
-
 
 
 

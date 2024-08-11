@@ -113,12 +113,12 @@ const Dashboard = () => {
             <i class="fa-regular fa-user"></i>
           </MenuButton>
           <MenuList>
-            <Link to={"#"}>
+            <Link to={"/profile"}>
               <MenuItem>Profile</MenuItem>
             </Link>
-            <Link to={"#"}>
+            
               <MenuItem>
-                {" "}
+               
                 <Text onClick={onOpen}>Setting</Text>
                 <Modal isOpen={isOpen} onClose={onClose}>
                   <ModalOverlay />
@@ -145,7 +145,7 @@ const Dashboard = () => {
                   </ModalContent>
                 </Modal>
               </MenuItem>
-            </Link>
+           
             <Link to={"#"}>
               <MenuItem>Notification</MenuItem>
             </Link>
