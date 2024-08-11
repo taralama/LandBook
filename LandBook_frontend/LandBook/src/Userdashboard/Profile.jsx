@@ -28,8 +28,8 @@ import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [profileData, setprofileData] = useState();
-  const [data, setData] = useState();
+  const [profileData, setprofileData] = useState(null);
+  const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,7 +44,7 @@ const Profile = () => {
         //   axios.get("http://localhost:8000/"),
         //   axios.get("http://localhost:8000/profile"),
         // ]);
-        if (response.data.Status === "Success") {
+        if (response.data.Status === "Success" && data.data && data.data.data.length > 0) {
           console.log(response.data.name);
           console.log("correct");
           setprofileData(response);
@@ -218,7 +218,7 @@ const Profile = () => {
             mt={"5vh"}
             display={"flex"}
           >
-            Name : {data[0].Userfullname}  <Text fontWeight={"light"}> {}</Text>
+            Name : {data.length > 0? (<Text>{data[0].Userfullname}</Text>):(<Text>Loading</Text>)}  <Text fontWeight={"light"}> {}</Text>
           </Heading>
           <Heading
             size={"md"}
