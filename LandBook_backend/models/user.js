@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema({
     },
     Usersavedprop:{
       type: Array,
+    },
+    UserAddress:{
+      type:String
+    },
+    UserPhone:{
+      type:String
     }
   });
 

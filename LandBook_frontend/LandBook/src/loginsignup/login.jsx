@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import img from "../Images/loginsignup/loginpan.png";
 import AutoTypingText from "../Components/Autotyping";
 
+
 const Login = () => {
   const toast = useToast({
     position: "top",
@@ -38,6 +39,8 @@ const Login = () => {
       const res = await axios.post("http://localhost:8000/login", data);
 
       if (res.data.msg === "Success") {
+
+      
         const userRole = await res.data.Role;
         if (userRole === 1) {
           navigate("/sdashboard");
@@ -135,8 +138,10 @@ const Login = () => {
               </Text>
               <Input
                 h={'1rem'}
+                
                 placeholder="Enter Username"
                 border={"none"}
+                
                 borderBottom={"1px solid "}
                 borderRadius={"none"}
                 _focus={{ boxShadow: "none", borderColor: "black" }}

@@ -226,7 +226,7 @@ const Profile = () => {
             mt={"5vh"}
             display={"flex"}
           >
-            Address : <Text fontWeight={"light"}> {}</Text>
+            Address : {data.length > 0? (<Text>{data[0].Userfullname}</Text>):(<Text>Loading</Text>)}<Text fontWeight={"light"}> {}</Text>
           </Heading>
           <Heading
             size={"md"}
@@ -234,7 +234,7 @@ const Profile = () => {
             mt={"5vh"}
             display={"flex"}
           >
-            Contact : <Text fontWeight={"light"}> {}</Text>
+            Contact : {data.length > 0? (<Text>{data[0].Userfullname}</Text>):(<Text>Loading</Text>)}<Text fontWeight={"light"}> {}</Text>
           </Heading>
           <Heading
             size={"md"}
@@ -242,7 +242,7 @@ const Profile = () => {
             mt={"5vh"}
             display={"flex"}
           >
-            Email : <Text fontWeight={"light"}> {}</Text>
+            Email : {data.length > 0? (<Text>{data[0].Useremail}</Text>):(<Text>Loading</Text>)}<Text fontWeight={"light"}> {}</Text>
           </Heading>
           <Heading
             size={"md"}

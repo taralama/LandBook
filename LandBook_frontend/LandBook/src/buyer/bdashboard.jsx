@@ -20,9 +20,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import {io} from 'socket.io-client'
+
 
 
 const Bdashboard = () => {
+
+
+
  
 
 
@@ -38,23 +43,42 @@ const Bdashboard = () => {
   };
 
   useEffect(() => {
+
+   
     const fetchData = async () => {
       try {
-        const [verifyResponse, dataResponse] = await Promise.all([
+        const [verifyResponse, dataResponse,] = await Promise.all([
           axios.get("http://localhost:8000/"),
           axios.get("http://localhost:8000/bdashboard"),
         ]);
 
         if (verifyResponse.data.Status === "Success") {
+          
           setAuth(true);
           const maindata = dataResponse.data.mainData;
-          setData(maindata);
+          setData(maindata)
+          const userID = verifyResponse
+          console.log(userID)
+          const socket = io('http://localhost:8000')
+
+
+
+          socket.on('connect',()=>{
+            console.log('connected',socket.id)
+          })
+          socket.on('message',(msg)=>{
+            console.log(msg);
+            
+          })
         } else {
           setAuth(false);
         }
       } catch (error) {
         console.log(error);
       }
+
+ 
+    
     };
     fetchData();
   }, [auth]);
@@ -67,6 +91,10 @@ const Bdashboard = () => {
       
     );
   });
+
+
+
+
 
   return (
     <>
