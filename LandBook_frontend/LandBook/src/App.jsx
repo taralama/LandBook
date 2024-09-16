@@ -13,6 +13,8 @@ import { Provider } from "react-redux";
 import store from "./reduxstore/store";
 import Saved from "./buyer/Saved";
 import Profile from "./Userdashboard/Profile";
+import SimpleMap from "./Components/googlemap";
+import Setting from "./Components/setting";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
       <Route path="/bdashboard/:id" element={<Singleprop/>}/>
       <Route path="/saved" element={<Saved/>}/>
       <Route path="/profile" element={<Profile/>}/>
+      <Route path="/setting" element = {<Setting/>}/>
+      <Route path="/map" element={<SimpleMap/>}/>
 
     </Routes>
     </Provider>

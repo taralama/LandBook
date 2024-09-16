@@ -50,35 +50,11 @@ app.use(router);
 app.use(sRouter);
 app.use(bRouter);
 
-const {Server} = require('socket.io')
-const http = require('http');
-
-const server = http.createServer(app)
-const io = new Server(server,{
-  cors: {
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-})
 
 
 
 
 
-io.on('connection',socket =>{
-  
-
-  
-  console.log('a user connected',socket.id);
-  socket.emit('welcome', 'Welcome to the WebSocket server!');
-
-  socket.on('message',(data)=>{
-    console.log(data)
-  })
-
-  socket.emit('message','hi')
-})
 
 
 // mongoose.connect('mongodb://localhost:27017/LandBook')
@@ -211,7 +187,6 @@ app.post('/sdashboard', upload.single('profileImage'), async (req, res) => {
 });
 
 
-
-server.listen(port, () => {
+app.listen(port, () => {
   console.log("server is running" + port);
 });

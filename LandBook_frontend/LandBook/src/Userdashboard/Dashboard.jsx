@@ -4,35 +4,38 @@ import Navbar from "../Components/Navbar";
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
 
 const Dashboard = () => {
-
-
-
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Box
-       
         height={"40vh"}
-        padding={'1rem'}
+        padding={"1rem"}
         display={"flex"}
         justifyContent={"center"}
       >
-        <Image width={'90%'} src={'https://lh3.googleusercontent.com/NzYtCnVs5zlwtabAYmclakWflzz_r2cTS0b36zFd4zroKLv4M283iUHS9xeMeRWdaY7MO_CogjxrCGeHTvf2ItrXlC5vKlPLhPUNf-UeGSsV0ubXGRGRMjROm6R1pkjE35VRguz2vRJRmCYHEMCxq1ny3wnC83_iSjkHUKE8JnfqDQHXiyI0XDpjpj8kGw'} h={"40vh"}></Image>
+        <Image
+          width={"90%"}
+          src={
+            "https://lh3.googleusercontent.com/NzYtCnVs5zlwtabAYmclakWflzz_r2cTS0b36zFd4zroKLv4M283iUHS9xeMeRWdaY7MO_CogjxrCGeHTvf2ItrXlC5vKlPLhPUNf-UeGSsV0ubXGRGRMjROm6R1pkjE35VRguz2vRJRmCYHEMCxq1ny3wnC83_iSjkHUKE8JnfqDQHXiyI0XDpjpj8kGw"
+          }
+          h={"40vh"}
+        ></Image>
       </Box>
 
       <Box
         // border={"1px solid "}
         h={"22vw"}
         display={"grid"}
+        
         gridTemplateColumns={{
           base: "25vw ",
           sm: "25vw 25vw",
-          lg: "30vw 30vw 30vw ",
+          lg: "25vw 25vw 25vw ",
         }}
         justifyContent={"center"}
         columnGap={"2.5vw"}
-        p={"1rem"}
-      >
+        
+              >
         <Box
           borderRadius={"1rem"}
           bgColor={"#F4F5F4"}
@@ -40,9 +43,10 @@ const Dashboard = () => {
           height={"40vh"}
           p={"1rem"}
         >
-          <Heading fontFamily={"manrope"} fontSize={"lg"}>
+          <Heading fontFamily={"manrope"} fontSize={"lg"} fontWeight={'bold'}>
             Why To Choose
           </Heading>
+          <Box border={'1px solid yellow '} width={'60%'}></Box>
           <Text mt={"1rem"} fontSize={"sm"} fontFamily={"manrope"}>
             Expert Market Knowledge: "Our agents are well-versed in local market
             trends." Dedicated Customer Support: "We offer 24/7 support to our

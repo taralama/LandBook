@@ -72,7 +72,7 @@ router.post("/signup", async (req, res) => {
       }
     } else {
       bcrypt.hash(body.Password, salt, (err, hash) => {
-        if (err) return res.json({ Error: "Eorrr in hashing" });
+        if (err) return res.json({ Error: "Error in hashing" });
   
         try {
           
@@ -161,7 +161,7 @@ router.post("/admin", async (req, res) => {
           }
         })
   
-        
+      
     }else {
       res.json({Status:"no username existed"})
     }
@@ -169,6 +169,73 @@ router.post("/admin", async (req, res) => {
       console.log(error);
     }
   });
+
+
+  router.post("/update-password", async (req, res,nextOn) => {
+    try {
+
+      const token = req.cookies.token
+      let name ;
+
+      if(!token){
+        return res.json({msg:'Signin first'})
+      }else{
+        jwt.verify(token,'jwt-secret-key',(err,decoded)=>{
+          if(err){
+            console.log('Token is not ok');
+            return res.json({msg:'Token is not ok'})
+          }else{
+            name = decoded.name;
+        
+            
+          }
+        })
+    
+
+      const result = await User.find({Username : name})
+
+
+      if(result.length > 0){
+
+        bcrypt.compare(req.body.oPass,result[0].Userpassword,(err,response)=>{
+          
+          if(err){
+            console.log(err)
+            return res.json({msg: 'error comparing password'})
+            
+          }
+          if(response){
+            let newPass = req.body.nPass
+            bcrypt.hash(newPass,salt,(err,hash)=>{
+              console.log(hash)
+            if(err) {
+               return res.json({msg: 'Error in hashing'})
+            }else{
+              console.log(name)
+              console.log( 'this is hash' ,hash)
+              console.log(result[0])
+
+             User.updateOne({Username : name},{$set:{Userpassword : hash}})
+              return res.json({msg:'Password successfully hanged'})
+            }e
+            })
+          }else{
+            return res.json({msg:'Old password does not match'})
+          }
+        })
+          
+      }
+      
+
   
+    
+    }
+
+    } catch (error) {
+
+      console.log( 'this is error',error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
   
 module.exports = {router,verifyUser}

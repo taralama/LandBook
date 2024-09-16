@@ -35,7 +35,7 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         axios.defaults.withCredentials = true;
-       
+
         const [response, data] = await Promise.all([
           axios.get("http://localhost:8000/"),
           axios.get("http://localhost:8000/profile"),
@@ -45,13 +45,16 @@ const Profile = () => {
         //   axios.get("http://localhost:8000/"),
         //   axios.get("http://localhost:8000/profile"),
         // ]);
-        if (response.data.Status === "Success" && data.data && data.data.data.length > 0) {
+        if (
+          response.data.Status === "Success" &&
+          data.data &&
+          data.data.data.length > 0
+        ) {
           console.log(response.data.name);
           console.log("correct");
           setprofileData(response);
-          console.log(data.data.data)
-          setData(data.data.data)
-          
+          console.log(data.data.data);
+          setData(data.data.data);
         } else {
           console.log(response.data);
           console.log("wrong");
@@ -65,54 +68,94 @@ const Profile = () => {
   }, []);
   return (
     <>
-    <Navbar/>
+      <Navbar />
 
       <Box
         p={"2rem"}
         display={"grid"}
-        gridTemplateColumns={"40vw 40vw"}
+        gridTemplateColumns={"20rem 40vw"}
         columnGap={"10vw"}
       >
         {" "}
         {/*div */}
-        <Box borderRadius={"50%"} h={"60vh"} bgColor={"red"}>
-          <Image src=""></Image>
-        </Box>
-        <Box h={"80vh"} p={"1rem"} bgColor={"wheat"}>
+        <Box
+          // border={'1px solid'}
+          borderRadius={"50%"}
+          h={"15rem"}
+          w={"15rem"}
+          backgroundImage={
+            "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd8lye-hBFwZ8kJ0fNBvVYWkE4UQtU5fF8Bw&s)"
+          }
+          backgroundPosition={"center"}
+          backgroundSize={"cover"}
+        ></Box>
+        <Box  h={"70vh"} p={"1rem"} bgColor={""}>
+          <Heading>PROFILE </Heading>
+          <Box
+            display={"flex"}
+            justifyContent={"center"}
+            border={"1px solid yellow"}
+            w={"10rem"}
+          ></Box>
           <Heading
-            size={"md"}
+            size={"sm"}
+            fontFamily={"manrope"}
+            fontWeight={"bold"}
+            mt={"5vh"}
+            display={"flex"}
+          >
+            Name :
+            {data.length > 0 ? (
+              <Text fontWeight={"light"}>{data[0].Userfullname}</Text>
+            ) : (
+              <Text>Loading</Text>
+            )}{" "}
+            <Text fontWeight={"light"}> {}</Text>
+          </Heading>
+          <Heading
+            size={"sm"}
             fontFamily={"manrope"}
             mt={"5vh"}
             display={"flex"}
           >
-            Name : {data.length > 0? (<Text>{data[0].Userfullname}</Text>):(<Text>Loading</Text>)}  <Text fontWeight={"light"}> {}</Text>
+            Address :{" "}
+            {data.length > 0 ? (
+              <Text>{data[0].Useraddress}</Text>
+            ) : (
+              <Text>Loading</Text>
+            )}
+            <Text fontWeight={"light"}> {}</Text>
           </Heading>
           <Heading
-            size={"md"}
+            size={"sm"}
             fontFamily={"manrope"}
             mt={"5vh"}
             display={"flex"}
           >
-            Address : {data.length > 0? (<Text>{data[0].Userfullname}</Text>):(<Text>Loading</Text>)}<Text fontWeight={"light"}> {}</Text>
+            Contact :{" "}
+            {data.length > 0 ? (
+              <Text fontWeight={"light"}>{data[0].Userfullname}</Text>
+            ) : (
+              <Text>Loading</Text>
+            )}
+            <Text fontWeight={"light"}> {}</Text>
           </Heading>
           <Heading
-            size={"md"}
+            size={"sm"}
             fontFamily={"manrope"}
             mt={"5vh"}
             display={"flex"}
           >
-            Contact : {data.length > 0? (<Text>{data[0].Userfullname}</Text>):(<Text>Loading</Text>)}<Text fontWeight={"light"}> {}</Text>
+            Email :{" "}
+            {data.length > 0 ? (
+              <Text fontWeight={"light"}>{data[0].Useremail}</Text>
+            ) : (
+              <Text>Loading</Text>
+            )}
+            <Text fontWeight={"light"}> {}</Text>
           </Heading>
           <Heading
-            size={"md"}
-            fontFamily={"manrope"}
-            mt={"5vh"}
-            display={"flex"}
-          >
-            Email : {data.length > 0? (<Text>{data[0].Useremail}</Text>):(<Text>Loading</Text>)}<Text fontWeight={"light"}> {}</Text>
-          </Heading>
-          <Heading
-            size={"md"}
+            size={"sm"}
             fontFamily={"manrope"}
             mt={"5vh"}
             display={"flex"}

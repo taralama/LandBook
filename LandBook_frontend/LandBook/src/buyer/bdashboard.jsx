@@ -20,7 +20,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {io} from 'socket.io-client'
+
 
 
 
@@ -57,19 +57,10 @@ const Bdashboard = () => {
           setAuth(true);
           const maindata = dataResponse.data.mainData;
           setData(maindata)
-          const userID = verifyResponse
-          console.log(userID)
-          const socket = io('http://localhost:8000')
+   
 
 
 
-          socket.on('connect',()=>{
-            console.log('connected',socket.id)
-          })
-          socket.on('message',(msg)=>{
-            console.log(msg);
-            
-          })
         } else {
           setAuth(false);
         }
@@ -131,12 +122,13 @@ const Bdashboard = () => {
               Property List
             </Text>
           </ListItem>
-          <ListItem>
-            <Link to={'/saved'}>
+          <Link to={'/saved'} > <ListItem display={'flex'} alignItems={'center'} gap={'.5rem'} >
+            
             <Text fontWeight={"bold"} fontFamily={"manrope"}>
               Saved
-            </Text></Link>
-          </ListItem>
+            </Text>
+            <i class="fa-solid fa-bookmark"></i>
+          </ListItem></Link>
         </UnorderedList>
       </Box>
 
@@ -243,31 +235,35 @@ const Bdashboard = () => {
             base: 'repeat(2,10rem)',
             sm: 'repeat(3,10rem)',
             md: 'repeat(5,10rem)',
-            lg: 'repeat(7,10rem)',
+            lg: 'repeat(6,10rem)',
           }}
-          gap={'2rem'}
+          gap={'4rem'}
         >
           {filteredData.map((item, index) => (
             <Link to={`/bdashboard/${index}`} key={index}>
               <Box
-                w={"10rem"}
-                h={"10rem"}
+                w={"13rem"}
+                h={"15rem"}
                 p={"5px"}
                 _hover={{ cursor: "pointer" }}
+                border={'none'}
                 boxShadow={"1px 1px 8px "}
                 borderRadius={"5px"}
                 overflow={'hidden'}
+                display={'flex'}
+                flexDirection={'column'}
               >
                 <Image
                   src={`http://localhost:8000/${item.Gallery}`}
                   border={"1px solid "}
-                  h={"5rem"}
+                  h={"8rem"}
                 />
                 <Text
                   fontWeight={"bold"}
                   fontSize={"14px"}
                   fontFamily={"manrope"}
                   textAlign={"center"}
+                  marginTop={'1rem'}
                 >
                   Beautiful roof house
                 </Text>
