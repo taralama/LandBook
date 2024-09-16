@@ -2,6 +2,7 @@ import React from 'react'
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+
 import {
     Box,
     Button,
@@ -59,10 +60,13 @@ const Navbar = () => {
       display={"flex"}
       gap={"8vw"}
       fontFamily={"manrope"}
-      _hover={{ cursor: "pointer" }}
-    >
-      <ListItem>
-        <Text fontWeight={"bold"}>Home</Text>
+     
+      >
+      <ListItem display={'flex'} alignItems={'center' } gap={'.5rem'}  _hover={{ cursor: "pointer" }}>
+      
+      <i class="fa-solid fa-house"></i>
+
+        <Link to={'/dashboard'}><Text fontWeight={"bold"}>Home</Text></Link>
       </ListItem>
       <ListItem>
         <Menu>
@@ -73,6 +77,7 @@ const Navbar = () => {
             fontFamily={"manrope"}
             border={"none"}
             height={""}
+            _hover={{ cursor: "pointer" }}
           >
             <Text textDecoration={"none"}>Properties</Text>
           </MenuButton>
@@ -85,15 +90,18 @@ const Navbar = () => {
             </Link>
           </MenuList>
         </Menu>
+      </ListItem >
+      <ListItem display={'flex'} alignItems={'center'} gap={'.5rem'}  _hover={{ cursor: "pointer" }}>
+      <i class="fa-solid fa-person"></i>
+        <Text fontWeight={"bold"} >Agent</Text>
       </ListItem>
-      <ListItem>
-        <Text fontWeight={"bold"}>Agent</Text>
-      </ListItem>
-      <ListItem>
+      <ListItem display={'flex'} alignItems={'center'} gap={'.5rem'}  _hover={{ cursor: "pointer" }}>
+      <i class="fa-solid fa-blog"></i>
         <Text fontWeight={"bold"}>Blogs</Text>
       </ListItem>
-      <ListItem>
-        <Text fontWeight={"bold"}>Contacts</Text>
+      <ListItem display={'flex'} alignItems={'center'} gap={'.5rem'}>
+      <i class="fa-solid fa-address-book"></i>
+        <Text fontWeight={"bold"}  _hover={{ cursor: "pointer" }}>Contacts</Text>
       </ListItem>
     </UnorderedList>
 
@@ -110,46 +118,14 @@ const Navbar = () => {
       >
         <i class="fa-regular fa-user"></i>
       </MenuButton>
-      <MenuList>
-        <Link to={"/profile"}>
-          <MenuItem>Profile</MenuItem>
-        </Link>
-        
-          <MenuItem>
-           
-            <Text onClick={onOpen}>Setting</Text>
-            <Modal isOpen={isOpen} onClose={onClose}>
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Setting</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <Text>Current Password</Text>
-                  <Input></Input>
-                  <Text>New Password</Text>
-                  <Input></Input>
-                  <Text>Confirm Password</Text>
-                  <Input></Input>
+      <MenuList display={'flex'} border={'none'}  flexDirection={'column'} alignItems={'center'} fontFamily={'manrope'}boxShadow={'1px 2px 8px'}>
+        <Heading p={'1px'} size={'1em'} fontFamily={'manrope'}>Account Section</Heading>
+        <Box border={'1px solid '} w={'7rem'} position={'absolute'} mt={'1.5rem'}></Box>
+        <Text _hover={{backgroundColor:'gray', cursor:'pointer'}}>Profile</Text>
+        <Text _hover={{backgroundColor:'white'}}>Setting</Text>
+        <Text _hover={{backgroundColor:'white'}}>Notification</Text>
+        <Text _hover={{backgroundColor:'white'}}>Logout</Text>
 
-                </ModalBody>
-               
-                <ModalFooter >
-                  <Button onSubmit={'#'} mr={'1rem'} bgColor={'green'} color='white' >Save</Button>
-                  <Button colorScheme="blue" mr={3} onClick={onClose}>
-                    Close
-                  </Button>
-                 
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          </MenuItem>
-       
-        <Link to={"#"}>
-          <MenuItem>Notification</MenuItem>
-        </Link>
-        <Link to={"/login"}>
-          <MenuItem>Logout</MenuItem>
-        </Link>
       </MenuList>
     </Menu>
   </Box>

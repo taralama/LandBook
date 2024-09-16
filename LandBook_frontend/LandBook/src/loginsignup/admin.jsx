@@ -27,6 +27,7 @@ const Admin = () => {
           }
         }else{
           alert(res.data.Status)
+          
         }
   
         
@@ -37,13 +38,19 @@ const Admin = () => {
   };
 
   return (
-    <Box className="h-30 w-2/4 border-2 " >
-      <Heading className="text-center border-2">Admin Login</Heading>
-      <form onSubmit={handleSubmit}>
-        <h2>Username</h2>
+    <>
+    <Box display={'flex'} justifyContent={'space-around'} flexDirection={'column'} alignItems={'center'} minHeight={'600px'}>
+        <marquee className='border-black-1 text-red-700 text-2xl bg-red-100 ' behavior="alternate" direction="left"> Ristricted for clients</marquee>
+      <Box border={'1px solid'} p={'1rem'} h={'400px'} width={'300px'} backgroundColor={'#3C466B'} borderRadius={'1rem'} boxShadow={'9px 5px 13px '}>
+
+        <Heading size={'lg'} color={'white'}>Admin Panel</Heading>
+
+        <form onSubmit={handleSubmit}>
+        <Heading size={'.5rem'} mt={'4rem'}  color={'white'} fontFamily={'manrope'} letterSpacing={'1px'}>Username</Heading>
         <Input
-          bg={"gray"}
-          color={"white"}
+        focusBorderColor="white"
+          bg={"white"}
+          color={"black"}
           onChange={(e) =>
             setValues({
               ...values,
@@ -51,26 +58,35 @@ const Admin = () => {
             })
           }
         />
-        <h2>Password</h2>
+        <Heading size={'.5rem'} mt={'1rem'}  color={'white'} fontFamily={'manrope'} letterSpacing={'1px'}>Password</Heading>
         <Input
           // type="password" // Ensure the password field hides the input
-          bg={"gray"}
-          color={"white"}
+          type="password"
+          focusBorderColor="white"
+          bg={"white"}
+          color={"black"}
           onChange={(e) =>
             setValues({
               ...values,
               Password: e.target.value,
+              
             })
+            
           }
         />
         <Link exact to={"/login"}>
-          <h3>LogIn as client</h3>
+          <h3 className="mt-5 absolute text-red-200">LogIn as client ?</h3>
         </Link>
-        <Button type="submit" mt={"1vh"} bgColor={"blue"} color={"white"}>
+        <Button type="submit" mt={"5rem"} bgColor={"gray"} h={'2rem'} width={'10rem'} color={"white"}  borderRadius={"10rem 0px 10rem 0px"} _hover={{color:'black'}}>
           Submit
         </Button>
       </form>
+
+
+      </Box>
     </Box>
+    </>
+    
   );
 };
 
