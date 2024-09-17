@@ -20,6 +20,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Navbar from "../Components/Navbar";
 
 
 
@@ -89,20 +90,7 @@ const Bdashboard = () => {
 
   return (
     <>
-      <Box
-        height={"6vh"}
-        w={{ base: "100%", sm: "100%", md: "100%" }}
-        bgColor={"#3C466B"}
-        textAlign={"left"}
-        p={"5px"}
-        border={"none"}
-      >
-        <Link to={'/dashboard'}>
-          <Heading ml={"1rem"} size={"lg"} color={"white"} fontFamily={"manrope"}>
-            LandBook
-          </Heading>
-        </Link>
-      </Box>
+        <Navbar/>
       <Box
         h={"6vh"}
         w={"100vw"}
@@ -111,6 +99,7 @@ const Bdashboard = () => {
         alignItems={"center"}
         pl={"3rem"}
         display={"flex"}
+        // bgColor={'  rgb(243, 239, 129)'}
       >
         <UnorderedList
           listStyleType={"none"}
@@ -210,12 +199,13 @@ const Bdashboard = () => {
             <Button
               h={"2rem"}
               w={"10rem"}
-              bgColor={"#E9E9EB"}
+              bgColor={" rgb(240, 235, 86)"}
               height={"3rem"}
               width={"15rem"}
               borderRadius={"2rem"}
               boxShadow={"1px 4px 8px rgba(0,0,0,0.4)"}
               type="submit"
+              
             >
               Search
             </Button>

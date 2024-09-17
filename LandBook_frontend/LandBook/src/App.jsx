@@ -15,6 +15,8 @@ import Saved from "./buyer/Saved";
 import Profile from "./Userdashboard/Profile";
 import SimpleMap from "./Components/googlemap";
 import Setting from "./Components/setting";
+import Notification from "./Userdashboard/Notification";
+import Issue from "./Components/Issue";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/setting" element = {<Setting/>}/>
       <Route path="/map" element={<SimpleMap/>}/>
+      <Route path="/notification" element={<Notification/>}/>
+      <Route path="/issuereport" element={<Issue/>}/>
 
     </Routes>
     </Provider>

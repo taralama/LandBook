@@ -2,6 +2,8 @@ import React from "react";
 
 import Navbar from "../Components/Navbar";
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
+import '../App.css'
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -22,11 +24,27 @@ const Dashboard = () => {
         ></Image>
       </Box>
 
+
+        <Link to={'/issuereport'}>      <Box
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        backgroundColor={'red'}
+        position={"fixed"}
+        h={"50px"}
+        w={"50px"}
+        border={"4px solid pink"}
+        borderRadius={"50%"}
+        bottom={"5rem"}
+        right={"5rem"}
+        id="report-button"
+      >
+<i class="fa-solid fa-bug fa-spin-pulse fa-sm " ></i>      </Box>
+</Link>            
       <Box
         // border={"1px solid "}
         h={"22vw"}
         display={"grid"}
-        
         gridTemplateColumns={{
           base: "25vw ",
           sm: "25vw 25vw",
@@ -34,8 +52,7 @@ const Dashboard = () => {
         }}
         justifyContent={"center"}
         columnGap={"2.5vw"}
-        
-              >
+      >
         <Box
           borderRadius={"1rem"}
           bgColor={"#F4F5F4"}
@@ -43,10 +60,10 @@ const Dashboard = () => {
           height={"40vh"}
           p={"1rem"}
         >
-          <Heading fontFamily={"manrope"} fontSize={"lg"} fontWeight={'bold'}>
+          <Heading fontFamily={"manrope"} fontSize={"lg"} fontWeight={"bold"}>
             Why To Choose
           </Heading>
-          <Box border={'1px solid yellow '} width={'60%'}></Box>
+          <Box border={"1px solid yellow "} width={"60%"}></Box>
           <Text mt={"1rem"} fontSize={"sm"} fontFamily={"manrope"}>
             Expert Market Knowledge: "Our agents are well-versed in local market
             trends." Dedicated Customer Support: "We offer 24/7 support to our

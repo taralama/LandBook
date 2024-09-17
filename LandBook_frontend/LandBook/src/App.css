@@ -42,6 +42,23 @@
   color: #888;
 } */
 
-.name{
-  color: rgb(194, 188, 1);
+#report-button{
+  cursor: pointer;
+  animation: bugscale 2s infinite;
+}
+
+@keyframes bugscale {
+  0%{
+    /* transform: scale(1); */
+    border: 1px solid pink;
+    transform: scale(1.1);
+    
+  }
+  50%{
+    /* transform: scale(5); */
+    border: 9px solid pink;
+  }
+  100%{
+    border: 1px solid rgb(255, 12, 12);
+  }
 }
