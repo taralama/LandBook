@@ -2,6 +2,7 @@ import React from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -16,12 +17,30 @@ import {
   MenuList,
   Text,
   UnorderedList,
-  useDisclosure,
-  Input,
+  
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const Navbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+  
+  const logOut = async ()=>{
+
+    try {
+      const response = await axios.get('http://localhost:8000/logout')
+    console.log(response)
+    if (!response.statusText === "OK") {
+      console.log('error in fetching ')
+    }else{
+      console.log(localStorage.getItem('token'));
+      console.log('logged out')
+      localStorage.removeItem('token')
+      navigate('/login')
+    }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <>
       {" "}
@@ -39,7 +58,7 @@ const Navbar = () => {
         <Heading ml={"1rem"} size={"lg"} color={"white"} fontFamily={"manrope"}>
           LandBook
         </Heading>
-        <marquee class="text-white" behavior="" direction="">
+        <marquee className="text-white" behavior="" direction="">
           Latest House are listed{" "}
         </marquee>
       </Box>
@@ -64,7 +83,7 @@ const Navbar = () => {
             gap={".5rem"}
             _hover={{ cursor: "pointer" }}
           >
-            <i class="fa-solid fa-house"></i>
+            <i className="fa-solid fa-house"></i>
 
             <Link to={"/dashboard"}>
               <Text fontWeight={"bold"}>Home</Text>
@@ -103,7 +122,7 @@ const Navbar = () => {
             gap={".5rem"}
             _hover={{ cursor: "pointer" }}
           >
-            <i class="fa-solid fa-person "></i>
+            <i className="fa-solid fa-person "></i>
             <Text fontWeight={"bold"}>Agent</Text>
           </ListItem>
           <ListItem
@@ -112,11 +131,11 @@ const Navbar = () => {
             gap={".5rem"}
             _hover={{ cursor: "pointer" }}
           >
-            <i class="fa-solid fa-blog"></i>
+            <i className="fa-solid fa-blog"></i>
             <Text fontWeight={"bold"}>Blogs</Text>
           </ListItem>
           <ListItem display={"flex"} alignItems={"center"} gap={".5rem"}>
-            <i class="fa-solid fa-address-book"></i>
+            <i className="fa-solid fa-address-book"></i>
             <Text fontWeight={"bold"} _hover={{ cursor: "pointer" }}>
               Contacts
             </Text>
@@ -134,7 +153,7 @@ const Navbar = () => {
             position={"absolute"}
             right={"0px"}
           >
-            <i class="fa-regular fa-user"></i>
+            <i className="fa-regular fa-user"></i>
           </MenuButton>
           <MenuList
             display={"flex"}
@@ -162,7 +181,7 @@ const Navbar = () => {
               <Text _hover={{ backgroundColor: "white" }}>Setting</Text>
             </Link>
             <Link to={'/notification'}><Text _hover={{ backgroundColor: "white" }}>Notification</Text></Link>
-            <Text _hover={{ backgroundColor: "white" }}>Logout</Text>
+            <Text  _hover={{ backgroundColor: "white",  cursor:'pointer' }} onClick={logOut}>Logout</Text>
           </MenuList>
         </Menu>
       </Box>

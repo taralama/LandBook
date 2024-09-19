@@ -263,4 +263,13 @@ router.post("/push-notification", async (req, res) => {
   }
 });
 
+router.get('/logout',verifyUser,(req,res)=>{
+  const token = req.cookies.token
+  console.log(token)
+  
+  console.log('logout api hit')
+  res.clearCookie("token",token)
+  res.json({msg: 'api hit logout'})
+})
+
 module.exports = { router, verifyUser };

@@ -37,6 +37,9 @@ const Adashboard = () => {
 
   return (
     <>
+
+
+      
       {auth ? (
         typeof data === "undefined" ? (
           <h1>there is no data</h1>
@@ -58,7 +61,7 @@ const Adashboard = () => {
               </Thead>
               <Tbody>
                 {data.map((newdata, index) => (
-                  <tr key={newdata.id}>
+                  <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{newdata.Username}</td>
                     <td>{newdata.Useremail}</td>

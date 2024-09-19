@@ -137,11 +137,12 @@ const Login = () => {
                 Username
               </Text>
               <Input
-                h={'1rem'}
+                h={'2rem'}
+
                 
                 placeholder="Enter Username"
-                border={"none"}
                 
+                border={'none'}
                 borderBottom={"1px solid "}
                 borderRadius={"none"}
                 _focus={{ boxShadow: "none", borderColor: "black" }}
@@ -163,7 +164,7 @@ const Login = () => {
               </Text>
               <Input
                 type="password"
-                h={'1rem'}
+                h={'2rem'}
                 border={"none"}
                 borderBottom={"1px solid "}
                 borderRadius={"none"}

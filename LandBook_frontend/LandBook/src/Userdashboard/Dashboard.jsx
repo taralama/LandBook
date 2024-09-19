@@ -39,7 +39,7 @@ const Dashboard = () => {
         right={"5rem"}
         id="report-button"
       >
-<i class="fa-solid fa-bug fa-spin-pulse fa-sm " ></i>      </Box>
+<i className="fa-solid fa-bug fa-spin-pulse fa-sm " ></i>      </Box>
 </Link>            
       <Box
         // border={"1px solid "}

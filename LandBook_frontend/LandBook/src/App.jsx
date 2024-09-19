@@ -17,6 +17,7 @@ import SimpleMap from "./Components/googlemap";
 import Setting from "./Components/setting";
 import Notification from "./Userdashboard/Notification";
 import Issue from "./Components/Issue";
+import Anavbar from "./admin/Acomponents/Anavbar";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
       <Route path="/map" element={<SimpleMap/>}/>
       <Route path="/notification" element={<Notification/>}/>
       <Route path="/issuereport" element={<Issue/>}/>
+      <Route path="/Anavbar" element={<Anavbar/>}/>
+      
 
     </Routes>
     </Provider>
