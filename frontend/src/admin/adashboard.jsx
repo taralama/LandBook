@@ -1,6 +1,6 @@
-import { Table, TableContainer, Tbody, Thead } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Table, TableContainer, Tbody, Thead } from "@chakra-ui/react";
 
 const Adashboard = () => {
   const [auth, setAuth] = useState(false);
@@ -37,9 +37,6 @@ const Adashboard = () => {
 
   return (
     <>
-
-
-      
       {auth ? (
         typeof data === "undefined" ? (
           <h1>there is no data</h1>
